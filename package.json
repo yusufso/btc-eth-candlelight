@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "name": "btc-eth-candlelight",
+  "version": "1.0.0",
+  "description": "Generate candlestick charts for btc/eth and eth/btc pairs",
+  "main": "main.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yusufso/btc-eth-candlelight.git"
+  },
+  "author": "yusufso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yusufso/btc-eth-candlelight/issues"
+  },
+  "homepage": "https://github.com/yusufso/btc-eth-candlelight#readme"
+}
