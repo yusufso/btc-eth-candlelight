@@ -1,7 +1,8 @@
 //CryptoCompare API
 //moolimooli@msgsafe.io
 //Password321
-
+//const https = require('https');
+import https from 'https';
 
 function GetCandleData(booBtcToEth, howLong, apiKey){
     //booBtcToEth = boolean value on whether ETH price relative to BTC or, BTC price relative to ETH
@@ -18,24 +19,27 @@ function GetCandleData(booBtcToEth, howLong, apiKey){
     //for each day up to howLong, 
     //  fetch open price, close price, highest price, lowest price
     
-    const https = require('https');
-
+    //if you want price of BTC in ETH
     if(booBtcToEth){
         //fetch historical price of BTC in ETH
-        let apiReq = 'https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=ETH&limit=' + howLong + '&api_key=' + apiKey;
 
+        let apiReq = 'https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=ETH&limit=' + howLong + '&api_key=' + apiKey;
+        //request data to CryptoCompare
         https.get(apiReq, (resp) => {
 
             let apiResponse = '';
 
-            resp.on('data', (chunk) => {
-                data += chunk;
+            //resp.on('data', (chunk) => {
+                //apiResponse += chunk;
+                //console.log(chunk);
+            //});
+
+            //once response is finished
+            resp.on('end', () => {
+                console.log(resp.Data.Data);
             });
 
-            resp.on('end', (chunk) => {
-                console.log(JSON.parse(data).explanation);
-            });
-
+            //if there is an error in response
             resp.on('error', (err) => {
                 console.log("Error: " + err.message);
             });
