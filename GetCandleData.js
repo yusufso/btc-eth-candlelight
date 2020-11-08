@@ -3,7 +3,6 @@
 //Password321
 
 import https from 'https';
-import JSONorganiser from './JSONorganiser.js';
 
 
 function GetCandleData(booBtcToEth, howLong, apiKey, callback){
@@ -41,10 +40,11 @@ function GetCandleData(booBtcToEth, howLong, apiKey, callback){
             resp.on('end', () => {
                 console.log('\n\napiResponse ended\n\n');
                 
-                //organise API response into simplified JSON and return to callback
-                JSONorganiser(apiResponse, (apiResponseJSON) => {
-                    callback(apiResponseJSON);
-                });
+                //parse and find relevant data from apiResponse
+                let parsedApiResponse = JSON.parse(apiResponse);
+                let OHLCVdata = parsedApiResponse.Data.Data;
+                callback(OHLCVdata);
+
             });
 
 
