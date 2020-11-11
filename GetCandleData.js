@@ -1,6 +1,4 @@
 //CryptoCompare API
-//moolimooli@msgsafe.io
-//Password321
 
 import https from 'https';
 
